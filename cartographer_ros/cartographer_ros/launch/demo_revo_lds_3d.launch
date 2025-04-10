@@ -1,0 +1,31 @@
+<launch>
+  <!-- 要跑自己的实际数据，这里务必设置为false -->
+  <param name="/use_sim_time" value="true" />
+  <!-- 需要包含自己设置的URDF描述文件 -->
+  <param name="robot_description"
+    textfile="$(find cartographer_ros)/urdf/my_backpack_3d.urdf" />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+
+  <node name="cartographer_node" pkg="cartographer_ros"
+      type="cartographer_node" args="
+          -configuration_directory $(find cartographer_ros)/configuration_files
+          -configuration_basename revo_lds_3d.lua"
+      output="screen">
+    <!-- 上面的 configuration_basename 需要修改为自己对应的lua文件名-->
+    <!-- 下面需要修改为雷达数据的话题 -->
+    <remap from="points2" to="/velodyne_points"/> 
+    <!-- IMU适配 -->
+    <remap from="imu" to="/imu/data"/>  
+  </node>
+
+  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+      type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+
+  <!-- lx_3d.rviz 中添加了3d点云的显示  (他编写了对应的代码实现的) -->
+  <!-- 如果下载的是官方的cartographer代码，需要修改为 demo_3d.rviz -->
+  <node name="rviz" pkg="rviz" type="rviz" required="true"
+      args="-d $(find cartographer_ros)/configuration_files/demo_3d.rviz" />
+
+</launch>

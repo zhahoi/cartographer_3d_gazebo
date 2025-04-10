@@ -1,0 +1,27 @@
+<launch>
+  <param name="/use_sim_time" value="true" />
+
+  <param name="robot_description"
+    textfile="$(find cartographer_ros)/urdf/my_backpack_3d.urdf" />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher"
+    type="robot_state_publisher" />
+
+  <node name="map_server" pkg="map_server" type="map_server" args="$(find cartographer_ros)/maps/0408.yaml"/>
+
+  <node name="cartographer_node" pkg="cartographer_ros"
+      type="cartographer_node" args="
+          -configuration_directory $(find cartographer_ros)/configuration_files
+          -configuration_basename backpack_3d_localization.lua
+          -load_state_filename $(find cartographer_ros)/maps/0408.pbstream"
+      output="screen">
+    <remap from="points2" to="/velodyne_points"/> 
+    <!-- IMU适配 -->
+    <remap from="imu" to="/imu/data"/> 
+  </node>
+
+  <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
+      type="cartographer_occupancy_grid_node" args="-resolution 0.05" />
+
+  <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find cartographer_ros)/configuration_files/demo_3d.rviz" />
+</launch>
