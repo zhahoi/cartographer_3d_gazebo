@@ -73,9 +73,9 @@ $ roslaunch scout_gazebo scout_gazebo.launch
 
 运行完launch文件之后，出现以下的界面：
 
-![Gazebo建模](C:\Users\HIT-HAYES\Desktop\Gazebo建模.png)
+![Gazebo建模](https://github.com/zhahoi/cartographer_3d_gazebo/blob/main/docs/Gazebo%E5%BB%BA%E6%A8%A1.png)
 
-![机器人模型](C:\Users\HIT-HAYES\Desktop\机器人模型.png)
+![机器人模型](https://github.com/zhahoi/cartographer_3d_gazebo/blob/main/docs/%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%A8%A1%E5%9E%8B.png)
 
 
 
@@ -86,7 +86,7 @@ $ source devel_isolated/setup.sh
 $ roslaunch cartographer_ros demo_revo_lds_3d.launch # 建图launch文件，实际执行的话可能需要执行两次才可以正确在rviz载入（暂时不知道原因）
 ```
 
-![建图](C:\Users\HIT-HAYES\Desktop\建图.png)
+![建图](https://github.com/zhahoi/cartographer_3d_gazebo/blob/main/docs/%E5%BB%BA%E5%9B%BE.png)
 
 
 
@@ -97,9 +97,9 @@ $ sudo apt install ros-noetic-teleop-twist-keyboard # 确保已安装ros包
 $ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
 
-![进行建图](C:\Users\HIT-HAYES\Desktop\进行建图.png)
+![进行建图](https://github.com/zhahoi/cartographer_3d_gazebo/blob/main/docs/%E8%BF%9B%E8%A1%8C%E5%BB%BA%E5%9B%BE.png)
 
-![建好的地图](C:\Users\HIT-HAYES\Desktop\建好的地图.png)
+![建好的地图](https://github.com/zhahoi/cartographer_3d_gazebo/blob/main/docs/%E5%BB%BA%E5%A5%BD%E7%9A%84%E5%9C%B0%E5%9B%BE.png)
 
 
 
@@ -112,7 +112,7 @@ $ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
   $ rosrun cartographer_ros cartographer_pbstream_to_ros_map -map_filestem=${HOME}/Maps/0408 -pbstream_filename=${HOME}//Maps/0408.pbstream -resolution=0.05  # 对建好的地图进行格式转换
   ```
 
-  ![保存的地图](C:\Users\HIT-HAYES\Desktop\保存的地图.png)
+  ![保存的地图](https://github.com/zhahoi/cartographer_3d_gazebo/blob/main/docs/%E4%BF%9D%E5%AD%98%E7%9A%84%E5%9C%B0%E5%9B%BE.png)
 
 为了方便后续进行定位导航，建议将建好的地图拷贝到*”/home/xxx/cartographer_ws/src/cartographer_ros/cartographer_ros/maps“*路径下。
 
@@ -134,7 +134,7 @@ $ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
   $ roslaunch cartographer_ros demo_3d_localization.launch # 定位launch文件，实际执行的话可能需要执行两次才可以正确在rviz载入（暂时不知道原因）
   ```
 
-  ![定位](C:\Users\HIT-HAYES\Desktop\定位.png)
+  ![定位](https://github.com/zhahoi/cartographer_3d_gazebo/blob/main/docs/%E5%AE%9A%E4%BD%8D.png)
 
 - 打开move_base程序，用于进行机器人导航（需新建一个控制台窗口）
 
@@ -145,9 +145,9 @@ $ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 
   发布一个目标点，机器人会运行到该位置，完成导航。
 
-![导航](C:\Users\HIT-HAYES\Desktop\导航.png)
+![导航](https://github.com/zhahoi/cartographer_3d_gazebo/blob/main/docs/%E5%AF%BC%E8%88%AA.png)
 
-![机器人导航](C:\Users\HIT-HAYES\Desktop\机器人导航.png)
+![机器人导航](https://github.com/zhahoi/cartographer_3d_gazebo/blob/main/docs/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AF%BC%E8%88%AA.png)
 
 
 
