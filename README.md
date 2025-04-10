@@ -44,6 +44,18 @@ $ git clone https://github.com/zhahoi/cartographer_3d_gazebo.git
 
 ”cartographer"具体的配置细节，这里不再赘述，大家可以参考该篇博客文章[Ubuntu20.04+ros-noetic配置Cartographer](https://blog.csdn.net/GFCLJY/article/details/141992799)，我是根据该篇文章的设置，配置成功的。(因为本仓库已经包含了cartographer和cartographer_ros，大家仅需要参考该篇博客将依赖装好就行)
 
+```sh
+# 安装依赖
+$ sudo apt-get update
+$ sudo apt-get install -y python3-wstool python3-rosdep ninja-build stow
+# 进入到工作空间目录
+$ cd ..
+$ sudo rosdep init
+$ sudo update
+$ rosdep install --from-paths src --ignore-src --rosdistro=noetic -y
+$ catkin_make_isolated --install --use-ninja
+```
+
  由于cartographer3d建图必须需要3d激光雷达和imu，必须得选择一个包含以上两种传感器的模型，在网上搜寻一番后，这篇博客[gazebo中给机器人添加16线激光雷达跑LIO-SAM](https://blog.csdn.net/weixin_40599145/article/details/126929222)里使用的机器人描述文件符合我的要求。该博客给出的机器人描述文件中还包含相机传感器，由于使用cartographer进行建图不需要相机，所以我在机器人描述文件中去除了该部分。
 
 
