@@ -1,47 +1,95 @@
 TebLocalPlannerROS:
 
-# Robot Configuration Parameters
-  max_vel_x: 2
-  min_vel_x: 1.5
+ odom_topic: /odom
+ map_frame: /map
+    
+ # Trajectory
+  
+ teb_autosize: true
+ dt_ref: 0.15
+ dt_hysteresis: 0.1
+ min_samples: 3
+ global_plan_overwrite_orientation: true
+ global_plan_viapoint_sep: 0.1
+ global_plan_prune_distance: 0.5
+ max_global_plan_lookahead_dist: 1.2
+ feasibility_check_no_poses: 5
+    
+ # Robot 机器狗的参数设置
+         
+ # max_vel_x: 1
+ # max_vel_x_backwards: 0.3
+ # max_vel_y: 0.18
+ # max_vel_theta: 0.8
+ # acc_lim_x: 1.2
+ # acc_lim_y: 0.8
+ # acc_lim_theta: 0.8
 
-  max_vel_y: 0.0
-  min_vel_y: 0.0
+ max_vel_x: 0.6
+ max_vel_x_backwards: 0.3
+ max_vel_y: 0.0
+ max_vel_theta: 0.6 # 0.4
+ acc_lim_x: 0.5
+ acc_lim_y: 0.0
+ acc_lim_theta: 0.5 # 0.4
+ min_turning_radius: 0.4  # 0.35
+ wheelbase: 0.498
+ footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
+    # type: "polygon"
+    # vertices: [[0.465, 0.35], [-0.465, 0.35], [-0.465, -0.35], [0.465, -0.35]] # for type "polygon"
+    type: "rectangle"
+    x: 0.925
+    y: 0.380
 
-# The velocity when robot is moving in a straight line
-  max_trans_vel:  2
-  min_trans_vel:  1.5
+ # GoalTolerance 目标点的容忍度
+    
+ xy_goal_tolerance: 0.25
+ yaw_goal_tolerance: 0.30
+ free_goal_vel: false
+    
+ # Obstacles 障碍物的设置
+    
+ min_obstacle_dist: 0.50 # 0.13
+ inflation_dist: 0.6
+ include_costmap_obstacles: true
+ costmap_obstacles_behind_robot_dist: 1.0
+ obstacle_poses_affected: 30
+#  costmap_converter_plugin: ""
+#  costmap_converter_spin_thread: True
+#  costmap_converter_rate: 5
 
-  max_rot_vel: 2.75
-  min_rot_vel: 2
+ # Optimization 轨迹优化的参数
+    
+ no_inner_iterations: 5
+ no_outer_iterations: 4
+ optimization_activate: true
+ optimization_verbose: false
+ penalty_epsilon: 0.05
+ weight_max_vel_x: 2.0
+ weight_max_vel_theta: 1.0
+ weight_acc_lim_x: 1.0
+ weight_acc_lim_y: 0.0
+ weight_acc_lim_theta: 1
+ weight_kinematics_nh: 1
+ weight_kinematics_forward_drive: 15  # 1
+ weight_kinematics_turning_radius: 5.0
+ weight_optimaltime: 0.3  # 1
+ weight_obstacle: 5.0
+ weight_viapoint: 1.0
+ weight_global_plan: 30.0
+ weight_dynamic_obstacle: 10 # not in use yet
+ alternative_time_cost: False # not in use yet
 
-  acc_lim_x: 2.5
-  acc_lim_y: 0.0
-  acc_lim_theta: 3.2 
+ # Homotopy Class Planner
 
-# Goal Tolerance Parametes
-  xy_goal_tolerance: 0.05
-  yaw_goal_tolerance: 0.17
-  latch_xy_goal_tolerance: false
-
-# Forward Simulation Parameters
-  sim_time: 1.5
-  vx_samples: 20
-  vy_samples: 0
-  vth_samples: 40
-  controller_frequency: 10.0
-
-# Trajectory Scoring Parameters
-  path_distance_bias: 32.0
-  goal_distance_bias: 20.0
-  occdist_scale: 0.02
-  forward_point_distance: 0.325
-  stop_time_buffer: 0.2
-  scaling_speed: 0.25
-  max_scaling_factor: 0.2
-
-# Oscillation Prevention Parameters
-  oscillation_reset_dist: 0.05
-
-# Debugging
-  publish_traj_pc : true
-  publish_cost_grid_pc: true
+ enable_homotopy_class_planning: true
+ enable_multithreading: true
+ simple_exploration: false
+ max_number_classes: 4
+ roadmap_graph_no_samples: 15
+ roadmap_graph_area_width: 5
+ h_signature_prescaler: 0.5
+ h_signature_threshold: 0.1
+ obstacle_keypoint_offset: 0.1
+ obstacle_heading_threshold: 1.0
+ visualize_hc_graph: false

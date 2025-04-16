@@ -1,4 +1,0 @@
-
-GlobalPlanner:
-  use_dijkstra: false
-  
