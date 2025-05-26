@@ -56,7 +56,29 @@ $ rosdep install --from-paths src --ignore-src --rosdistro=noetic -y
 $ catkin_make_isolated # 编译
 ```
 
- 由于cartographer3d建图必须需要3d激光雷达和imu，必须得选择一个包含以上两种传感器的模型，在网上搜寻一番后，这篇博客[gazebo中给机器人添加16线激光雷达跑LIO-SAM](https://blog.csdn.net/weixin_40599145/article/details/126929222)里使用的机器人描述文件符合我的要求。该博客给出的机器人描述文件中还包含相机传感器，由于使用cartographer进行建图不需要相机，所以我在机器人描述文件中去除了该部分。
+3. 安装特定版本的Abseil
+
+在执行"catkin_make_isolated"时会报错，实际是环境中缺少了Abseil，直接安装Abseil还是会在编译过程中报错终止，经过AI的提示，要下载特定版本的Abseil才能正常编译。安装过程如下：
+
+```sh
+$ git clone https://github.com/abseil/abseil-cpp.git
+$ cd abseil-cpp
+$ git checkout 20220623.0
+$ mkdir build && cd build
+$ cmake -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DCMAKE_INSTALL_PREFIX=/usr/local ..
+$ make -j4
+$ sudo make install
+```
+
+  4.安装move_base
+
+后续进行导航时需要依赖ros提供的导航库，需要提前进行安装。
+
+```sh
+$ sudo apt-get install ros-noetic-navigation
+```
+
+由于cartographer3d建图必须需要3d激光雷达和imu，必须得选择一个包含以上两种传感器的模型，在网上搜寻一番后，这篇博客[gazebo中给机器人添加16线激光雷达跑LIO-SAM](https://blog.csdn.net/weixin_40599145/article/details/126929222)里使用的机器人描述文件符合我的要求。该博客给出的机器人描述文件中还包含相机传感器，由于使用cartographer进行建图不需要相机，所以我在机器人描述文件中去除了该部分。
 
 
 
