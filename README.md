@@ -131,7 +131,7 @@ $ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 
 ![建好的地图](https://github.com/zhahoi/cartographer_3d_gazebo/blob/main/docs/%E5%BB%BA%E5%A5%BD%E7%9A%84%E5%9C%B0%E5%9B%BE.png)
 
-
+#### 注：由于后续导航使用的是”纯定位“模型，请在地图建好之后，让机器人回到出发点，并且机器人朝向尽可能和初始时保持一致。这样后续导航时，才会更准确。
 
 - 保存建好的地图（新建一个控制台窗口）
 
