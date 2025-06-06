@@ -157,6 +157,12 @@ $ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
   $ roslaunch scout_gazebo scout_gazebo.launch
   ```
 
+- 启动控制机器人移动节点（需新建一个控制台窗口）
+
+  ```sh
+  rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+  ```
+  
 - 打开Cartographer 3D定位程序（已修改为纯定位模式）（需新建一个控制台窗口）
 
   ```sh
