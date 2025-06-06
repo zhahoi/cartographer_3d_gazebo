@@ -9,6 +9,14 @@
 
 
 
+### [2025.06.06补充]
+
+如果对本仓库的实现感兴趣的话，可以看看我另一个仓库的实现。在实现Gazebo仿真平台进行Cartographer 3D的建图和导航仿真之后，继续在此基础上增加了“目标检测”和“语音控制导航"功能。
+
+其对应的Github仓库链接如下：[robot_navigation_and_voice_control](https://github.com/zhahoi/robot_navigation_and_voice_control)。
+
+
+
 ### 测试环境
 
 - 测试系统：ubuntu 20.04
