@@ -86,7 +86,7 @@ $ sudo make install
 $ sudo apt-get install ros-noetic-navigation
 ```
 
-由于cartographer3d建图必须需要3d激光雷达和imu，必须得选择一个包含以上两种传感器的模型，在网上搜寻一番后，这篇博客[gazebo中给机器人添加16线激光雷达跑LIO-SAM](https://blog.csdn.net/weixin_40599145/article/details/126929222)里使用的机器人描述文件符合我的要求。该博客给出的机器人描述文件中还包含相机传感器，由于使用cartographer进行建图不需要相机，所以我在机器人描述文件中去除了该部分。
+由于cartographer3d建图必须需要3d激光雷达和imu，必须得选择一个包含以上两种传感器的模型，在网上搜寻一番后，这篇博客[gazebo中给机器人添加16线激光雷达跑LIO-SAM](https://blog.csdn.net/weixin_40599145/article/details/126929222)里使用的机器人描述文件符合我的要求。该博客给出的机器人描述文件中还包含相机传感器，~~由于使用cartographer进行建图不需要相机，所以我在机器人描述文件中去除了该部分。~~
 
 
 

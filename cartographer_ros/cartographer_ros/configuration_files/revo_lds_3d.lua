@@ -10,7 +10,7 @@ options = {
   tracking_frame = "imu_base",
   published_frame = "base_link",
   odom_frame = "odom",
-  provide_odom_frame = false,
+  provide_odom_frame = true,
   publish_frame_projected_to_2d = false,
   use_pose_extrapolator = true,    --zhushi
 

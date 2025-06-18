@@ -31,8 +31,9 @@
     <xacro:include filename="$(find scout_gazebo)/urdf/scout_wheel_type1.xacro" />
     <xacro:include filename="$(find scout_gazebo)/urdf/scout_wheel_type2.xacro" />
     <xacro:include filename="$(find scout_gazebo)/urdf/inertial.xacro" />
-    <!-- <xacro:include filename="$(find scout_gazebo)/urdf/camera.xacro" /> -->
-    <!-- <xacro:include filename="$(find scout_gazebo)/urdf/sensor_camera.xacro" /> -->
+	
+    <xacro:include filename="$(find scout_gazebo)/urdf/camera.xacro" /> 
+    <xacro:include filename="$(find scout_gazebo)/urdf/sensor_camera.xacro" />
     
     <!-- D435i RGB-D相机相关 -->
     <!-- <xacro:include filename="$(find realsense_ros_gazebo)/xacro/depthcam.xacro"/>
